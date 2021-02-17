@@ -22,4 +22,7 @@ if __name__ == '__main__':
 
     # pyqt designer (GUI)
     # 콜백 메소드 / 동기 및 비동기 개념
+    # 데코레이터
+    # 제너레이터
+    # 코루탄
     pass
