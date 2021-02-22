@@ -1,23 +1,22 @@
-class buri:
-    def __init__(self, first, second):
-        print('this is juicy')
-        self.first = first
-        self.second = second
+class drink:
+    x = '레쓰비', 500
+    y = '물', 600
+    def __init__(self, money):
+        self.money = money
+        return
 
-    def add(self, a, b):
-        return a+b
-
-    def sub(self, c, b):
-        return c-b
-
-    def mul(self, a, b):
-        return a*b
-
-h = buri(1, 10000)
-print(h, type(h))
-q = h.mul(1, 1000)
-w = h.sub(5000, 1000)
-print(q, w)
-
-j = {'주스':1000}
-print(j, type(j))
+    def get_drink_by_name(self, money):
+        if money < self.x:
+            print('돈이 부족합니다')
+        elif money < self.y:
+            print('레쓰비를 고를 수 있습니다.')
+        else :
+            print('둘 다 고를 수 있습니다')
+    while 1:
+        japangi = drink
+        money = int(input('금액을 넣어주세요 : '))
+        if money < japangi.x:
+            print('돈이 부족합니다. 반환합니다')
+        else :
+            menu = int(input('메뉴를 선택해주세요(1.레쓰비, 2.물 : '))
+        break
