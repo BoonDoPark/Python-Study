@@ -1,4 +1,5 @@
 class drinks:
+    print('안녕하세요. drink입니다.')
     w = {'레몬' : 500, '물' : 600}
 
     def __init__(self, money):
@@ -9,9 +10,9 @@ class drinks:
         if money < self.w['레몬']:
             print('돈이 부족합니다')
         elif money < self.w['물']:
-            print('레쓰비를 고를 수 있습니다.')
+            print('1번만 골라주세요.')
         else :
-            print('둘 다 고를 수 있습니다')
+            print('1번, 2번을 골라주세요')
 
 while True:
      japangi = drinks(0)
@@ -23,7 +24,7 @@ while True:
         menu = int(input('메뉴를 선택해주세요(1 : 레몬, 2 : 물) : '))
         if menu == 1:
             print('레몬이 선택되었습니다. 거스름돈은 ')
-        elif menu == 2:
+        elif menu <= 2:
             print('물이 선택되었습니다. 거스름돈은 ')
         else:
             print('취소되었습니다.')
