@@ -7,10 +7,10 @@ class vending_machine:
         self.money = money
         return
 
-    def pay(self, drink_menu):
+    def pay(self, drink_menu, people_money):
         self.drink_menu = drink_menu
-        self.peaple_money = peaple_money
-        return peaple_money - drink_menu
+        self.people_money = people_money
+        return people_money - drink_menu
 
     def get_drink_by_money(self, money):
         if money < self.drink_menu['레몬']:
@@ -26,7 +26,6 @@ class vending_machine:
         if money < drink_menu['레몬']:
             print('돈이 부족합니다. 반환합니다')
         else :
-            get_drink_by_money(money)
             menu = int(input('메뉴를 선택해주세요(1 : 레몬, 2 : 물) : '))
             if menu == 1:
                 print('레몬이 선택되었습니다. 거스름돈은 입니다.')
