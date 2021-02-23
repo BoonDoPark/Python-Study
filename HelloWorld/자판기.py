@@ -1,4 +1,4 @@
-class vendingMachine:
+class VendingMachine:
     # 함수를 이용
     def __init__(self):
         self.drink_menu = {'레몬' : 500, '물' : 600}
@@ -39,22 +39,5 @@ class vendingMachine:
             if answer:
                 break
 
-Machine = vendingMachine()
-Machine.consequence()
-    # while문을 이용
-    # while True:
-    #     money = int(input('금액을 넣어주세요 : '))
-    # # if문을 이용
-    #     if money < drink_menu['레몬']:
-    #         print('돈이 부족합니다. 반환합니다')
-    #     else :
-    #         menu = int(input('메뉴를 선택해주세요(1 : 레몬, 2 : 물) : '))
-    #         if menu == 1:
-    #             print('레몬이 선택되었습니다. 거스름돈은 입니다.')
-    #         elif menu <= 2:
-    #             print('물이 선택되었습니다. 거스름돈은 입니다.')
-    #         else:
-    #             print('취소되었습니다.')
-    #         break
-
-print("이용해 주셔서 감사합니다.")
+machine = VendingMachine()
+machine.consequence()
