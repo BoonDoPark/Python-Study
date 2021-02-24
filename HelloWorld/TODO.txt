@@ -1,0 +1,29 @@
+# Course
+- 인덱스 슬라이싱
+- Comprehension
+- 상속
+- 접근제한자
+- 정적메소드 (@staticmethod, @classmethod)
+- 추상클래스 (import abc)
+
+
+- 동기 / 비동기
+- 제너레이터
+- 데코레이터
+- 코루틴
+
+- pyQt Framework
+- Django Framework
+
+※ 모듈 사용 (copy, datetime, pandas, os, openpyxl, pickle, json, Selenium ..)
+
+# Homework
+- 자판기 만들기
+클래스, 딕셔너리(음료이름 : 가격), 함수(음료이름을 파라미터로 넘기면 해당 음료의 가격을 반환하는 함수, get_beverage_by_name),
+if문, while문(break문 사용해서 루프를 멈출수있음), 변수(자판기 인스턴스)
+
+- 엘레베이터 (콘솔버전)
+
+- 엘레베이터 (pyQt - GUI)
+
+- 웹 크롤러 (Selenium, pyQt, Django)
