@@ -1,21 +1,27 @@
 class VendingMachine:
     # 함수를 이용
     def __init__(self):
-        self.drink_menu = {'레몬' : 500, '물' : 600}
+        self.drink_menu = {1 : ('레몬', 500), 2 : ('물', 600)}
         self.money = 0
 
-    def pay(self):
+    def input(self):
         money = int(input('돈을 넣어주세요 : '))
-        self.money =  money
+        self.money = money
+
+    def show_menu(self):
+        menus = self.drink_menu.keys()
+        for idx, menu in enumerate(menus):
+            print('{0}. {1}'.format(idx, menu))
 
     def select(self):
-        menu = input('메뉴를 선택해주세요 : ')
-        cost = self.drink_menu[menu]
-        return menu, cost
+        self.show_menu()
+        _idx = int(input('메뉴를 선택해주세요. : ')
+            cost = self.drink_menu[menu]
+            return menu, cost
 
     def compare(self, menu, cost):
         if self.money >= cost:
-            print('음료수를 받으세요.')
+            print('{}를 받으세요.'.format(menu))
             self.money = self.money - cost
         else:
             print('돈이 부족합니다.')
@@ -30,14 +36,18 @@ class VendingMachine:
             return True
 
 
-    def consequence(self):
+    def process(self):
         while True:
-            self.pay()
+            self.input()
             menu, cost = self.select()
+            self.compare(menu, cost)
+            if not cost:
+                print('없는 음료수를 택하셨습니다.')
+                break
             self.compare(menu, cost)
             answer = self.question()
             if answer:
                 break
 
 machine = VendingMachine()
-machine.consequence()
+machine.process()
