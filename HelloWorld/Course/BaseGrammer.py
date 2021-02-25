@@ -19,6 +19,7 @@ class Calculator:
     def mul_by_init(self):
         return self.first * self.second
 
+
 def add(a, b):
     return a + b
 
