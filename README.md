@@ -22,7 +22,7 @@ class Person:
     
 person = Person()
 ```
-클래스명()을 호출하게되면 실제로 호출되는 것은 클래스의 매지메소드 중 하나인 __init__() 메소드가 호출된다. 그리고 Person()은 Person 타입의 객체가 되어 person이라는 변수에 할당(assign)된다.
+클래스명()을 호출하게되면 실제로 호출되는 것은 클래스의 매직메소드 중 하나인 __init__() 메소드가 호출된다. 그리고 Person()은 Person 타입의 객체가 되어 person이라는 변수에 할당(assign)된다.
 
 ### while문, break문
 
