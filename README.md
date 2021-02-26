@@ -191,6 +191,7 @@ print(number)
 ### 상속
 ### 접근제한자
 ### 정적메소드 (@staticmethod, @classmethod)
+### 싱글톤패턴
 ### 추상클래스 (import abc)
 ### 동기 / 비동기
 ### 제너레이터

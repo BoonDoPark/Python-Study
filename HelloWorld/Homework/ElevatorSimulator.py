@@ -46,7 +46,7 @@ class ElevatorScheduler:
         # 여기에 로직 추가
         pass
 
-    def compare_between_current_datetime_and_afternoon(self) -> bool:
+    def is_current_datetime_afternoon(self) -> bool:
         """
         2021.02.26.hsk : 현재 시간이 오후인지 아닌지 비교
         :return:
@@ -63,8 +63,12 @@ class ElevatorScheduler:
         :return:
         """
         selected_elevator_num = -1  # 선택된 엘레베이터 번호 (0번째, 1번째) / -1일경우 선택이 안된 상태
-
+        # 오전 오후 구글링, 오전 :
         # 여기에 로직 추가
+        # 1.get_current_datetime 얻어오기 다음에 반환
+        # 2.is_current_datetime_afternoon if문 분기
+        # 3.for문 self.elevators 층, elevator.current_floor, my_floor 비교(elevator.current_floor - my_floor), abs함수이용
+        # 오전. 크기작음, 오후. 크기큼, enumerate->select_elevator, idx값을 할당 순서 주의
 
         return selected_elevator_num
 
