@@ -1,5 +1,5 @@
 # Python
-Learning Python
+Learning Python.  
 ※ 모듈 사용 (copy, datetime, pandas, os, openpyxl, pickle, json, Selenium ..)
 
 ## Course
