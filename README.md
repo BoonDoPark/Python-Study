@@ -211,9 +211,28 @@ print(list(l2[2:9]))
 
 위와 같이 range도 인덱스 슬라이싱이 가능하다. range는 요소가 모두 포함되지않고 범위만을 알려주기 때문에, list로 변환해서 요소를 생성시켜 확인한다.
 
-### Comprehension
+### 표현식(Comprehension)
 
+표현식(comprehension)은 for in반복문이나 if문을 사용하여 컬렉션 내부의 원소들을 구성시킬 수 있습니다. 표현식(comprehension)에는 리스트, 딕셔너리를 사용해서 만들 수 있다. 예를들어,
 
+```python
+l1 = [13, 22, 54, 36, 58, 29, 17, 6, 25]
+for i in enumerate(l1):
+    print(i)
+
+l1 = [i for i in enumerate(l1)]
+print(l1)
+```
+
+위와 같이 l1의 for문을 이용하여 출력하고 있다. 하지만 표현식을 이용하여 for문을 간결하게 했다. 복잡한 코드를 간결하게 해준다. 그리고 딕셔너리를 사용해서 만들 수 있다. 예를들어,
+
+```python
+country_capital = {'대한민국':'서울', '영국' :'런던', '미국' :'워싱턴', '일본' :'도쿄'}
+country_capital = {capital : country for country, capital in country_capital.items()}
+print(country_capital)
+```
+
+위와 같이 딕셔너리를 사용하여 표현식을 만들어 낼 수 있다.
 ### 상속
 
 
