@@ -68,7 +68,32 @@ l2.pop(0)
 l2.extend([2, 9])
 print(l2)
 ```
+
 위에서 보면 append는 l1이라는 리스트에 8을 추가하겠다는 뜻이다. count는 l1의 리스트에 중복된 2라는 숫자의 수를 알 수 있다. insert는 l1의 4번째 열(index)에 2를 삽입하겠다는 뜻이다. sort는 l1의 리스트를 순서대로 정돈해준다. reverse는 l2의 리스트의 목록을 거꾸로 전환해준다. remove는 요소제거해준다. 그래서, l2리스트에 2를 제거해주는 것을 확인할 수 있다. pop은 열의 0번째를 삭제해주었다. extend는 말그대로 확장이라는 뜻이다. l2리스트에 2, 9라는 숫자를 리스트에 추가해주었다.
+
+### 튜플(tuple)
+
+튜플(tuple)은 ()을 사용한다. 또, 리스트(list)와 거의 비슷하지만 몇가지 다른점이 있다.
+
+```python
+t1 = 1, 2
+print(t1)
+
+t2 = (10)
+print(type(t2))
+
+t2 = (10,)
+print(type(t2))
+```
+
+위처럼 첫번째는 **괄호를 생략해도 괜찮다.** 두번째로 **t2의 type은 숫자(int)로 나온다. 하지만 10에 comma를 추가하면 숫자(int)타입에서 튜플(tuple)타입으로 바뀐다.** 하나의 요소만 있는 튜플은 comma를 사용해야 튜플로 사용이 된다. 리스트(ilst)는 생성, 삭제, 추가가 가능하지만, 튜플(tuple)은 한번 생성되면 바꿀수 없다. 또한, 튜플(tuple)은
+
+```python
+t1 = 11, 25, 36, 27, 59, 30
+print(t1[3])
+```
+
+위와 같이 순서가 있기 때문에, 인덱싱이 가능하다.
 
 ### 딕셔너리(dict)
 
@@ -102,6 +127,27 @@ animal.items()
 dict_items([('육식동물', '호랑이'), ('초식동물', '기린')])
 ```
 dict클래스의 items() 메소드를 호출하면 키와 값의 쌍(튜플 형태)의 목록(리스트)을 얻을 수 있다.
+
+### 집합(set)
+
+집합(set)은 집합을 관련된 것을 편하게 처리하기 위한 것이다.
+
+```python
+s1 = set('i saw miracle')
+print(s1)
+```
+
+출력하면 {'i', 'r', 's', 'l', 'e', 'c', 'w', 'm', 'a', ' '}이 출력된다. 출려된 결과값을 보면 집합(set)는 **중복하지 않는다.** 또, **순서가 없다**는 걸 알 수 있다. 그래서 인덱싱으로 값을 얻을 수 없다. 값을 얻고 싶다면 리스트로 바꿔주어야한다. 에를들어,
+
+```python
+s1 = set([1, 2, 3, 4, 5])
+print(s1)
+l1 = list(s1)
+print(l1)
+print(l1[1])
+```
+
+위처럼 리스트로 변환을 한 후에 인덱싱을 사용할 수 있다.
 
 ### for문
 
@@ -214,6 +260,7 @@ print(list(l2[2:9]))
 ### 표현식(Comprehension)
 
 표현식(comprehension)은 for in반복문이나 if문을 사용하여 컬렉션 내부의 원소들을 구성시킬 수 있습니다. 표현식(comprehension)에는 리스트, 딕셔너리를 사용해서 만들 수 있다. 예를들어,
++ 컬렉션 : 파이썬에서 기본적인 데이터의 집합타입이 존재한다. 그 중에서 컬렌션의 종류는 리스트(list), 딕셔너리(dictanary), 튜플(tuple), 셋(set)이 있다.
 
 ```python
 l1 = [13, 22, 54, 36, 58, 29, 17, 6, 25]
@@ -233,8 +280,57 @@ print(country_capital)
 ```
 
 위와 같이 딕셔너리를 사용하여 표현식을 만들어 낼 수 있다.
-### 상속
 
+### 상속(inheritance)
+
+상속(inheritance)이란 사전 뜻은 '어떤 것을 물려 받는다.'이다. 사전의 뜻처럼 부모의 클래스를 자식 클래스로 물려주는 것을 뜻한다. 예를들어,
+
+```python
+class DrinkMenu:
+    def __init__(self):
+        self.name = '음료수'
+
+    def price(self):
+        print(1300, self.name)
+
+class cola(DrinkMenu):
+    def __init__(self):
+        self.name = '콜라'
+
+
+DM = DrinkMenu()
+DM.price()
+c = cola()
+c.price()
+```
+
+위처럼 부모클래스인 DrinkMenu의 속성과 메소드를 자식클래스 cola가 사용할 수 있는 것을 확인할 수 있다. 그리고 부모클래스의 속성과 메소드를 상속를 받고, 자식클래스에서 재정리 할 수 있다. 그것을 **오버라이딩(overriding)** 이라고 한다. 그리고, 파이썬은 다중상속도 가능하다. 에를 들어,
+
+```python
+class DrinkMenu:
+    def __init__(self):
+        self.name = '음료수'
+
+    def price(self):
+        print(1300, self.name)
+
+class cola(DrinkMenu):
+    def __init__(self):
+        self.name = '콜라'
+
+class sprite(DrinkMenu):
+    def __init__(self):
+        self.name = '사이다'
+
+DM = DrinkMenu()
+DM.price()
+c = cola()
+c.price()
+s = sprite()
+s.price()
+```
+
+위처럼 부모클래스에 자식클래스가 두개여도 되고 부모클래스가 2개여도 상관없다. 다중상속엔 개수는 제한이 없다.
 
 ### 접근제한자
 
