@@ -62,7 +62,7 @@ class ElevatorScheduler:
         :return:
         """
         # 여기에 로직 추가
-        pass
+        return datetime.datetime.now
 
     def is_current_datetime_afternoon(self, current_datetime) -> bool:
         """
@@ -71,7 +71,12 @@ class ElevatorScheduler:
         :return:
         """
         # 여기에 로직 추가
-        pass
+        datetime.datetime.now = current_datetime
+        current_datetime.strptime('%p')
+        if current_datetime == '오후':
+            return True
+        else:
+            return False
 
     def select_elevator(self, my_floor) -> int:
         """
@@ -91,7 +96,10 @@ class ElevatorScheduler:
         # 3-3. my_floor 와 elevator.current_floor 비교
         # 3-3. 두 값의 차에 abs 함수 사용 (절대값)
         # 3-4. 적합한 index 값을 selected_elevator_num 에 할당.
-
+        self.get_current_datetime()
+        self.is_current_datetime_afternoon()
+        for self.elevator in self.elevators:
+            if self.is_current_datetime_afternoon()
         return selected_elevator_num
 
 
