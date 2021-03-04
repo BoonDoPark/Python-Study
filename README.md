@@ -332,8 +332,43 @@ s.price()
 
 위처럼 부모클래스에 자식클래스가 두개여도 되고 부모클래스가 2개여도 상관없다. 다중상속엔 개수는 제한이 없다.
 
-### 접근제한자
+### 접근제한자(Access Modifier)
 
+접근제한자(Access Modifier)는 말 그대로 다른 사람이 나의 가상환경에 접근을 못하게 하고싶거나 제한하고 싶을 때 사용된다. 예를들어,
+
+```python
+class Drink:
+    def __init__(self):
+        self.menu = '음료수'
+        self.price = 1200
+
+    def _info(self):
+        print(self.menu, self.price)
+
+    def __info__(self):
+        print(self.menu, self.price)
+
+    def __info(self):
+        print(self.menu, self.price)
+
+class Cola(Drink):
+    def drink(self):
+        self._info()
+        # self.__info()
+        self.__info__()
+        print('콜라로 부탁해요')
+
+
+drink = Drink()
+drink._info()
+# drink.__info()
+
+c = Cola()
+c.__info__()
+c.drink()
+```
+
+언더바(_)를 한번 쓰면
 
 ### 정적메소드 (@staticmethod, @classmethod)
 
