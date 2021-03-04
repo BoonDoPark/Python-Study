@@ -334,7 +334,7 @@ s.price()
 
 ### 접근제한자(Access Modifier)
 
-접근제한자(Access Modifier)는 말 그대로 다른 사람이 나의 가상환경에 접근을 못하게 하고싶거나 제한하고 싶을 때 사용된다. 예를들어,
+접근제한자(Access Modifier)는 말 그대로 다른 사람이 나의 가상환경에 접근을 못하게 하고싶거나 제한하고 싶을 때 사용한다. 예를들어,
 
 ```python
 class Drink:
@@ -368,7 +368,7 @@ c.__info__()
 c.drink()
 ```
 
-언더바(_)를 한번 쓰면
+위와 같이, 언더바(_)를 한번 쓰면 protected 접근제한자로, class Drink의 내부에서만 사용할 수 있습니다. 하지만,  자식클래스는 부모클래스의 언더바(_)를 한번 쓴 함수에 접근할 수 있다. 언더바(_)를 두번 쓰면  private 접근제한자로, 외부와 자식클래스까지 접근이 할 수 없다. 만약, class Drink의 언더바(_)를 두번 쓴 함수를 출력하면 AttributeError가 뜨기 때문에, 주의해야 한다. 그러나, 뒤에 언더바(_)를 두번쓰면 AttributeError에서 public이 된다.
 
 ### 정적메소드 (@staticmethod, @classmethod)
 
