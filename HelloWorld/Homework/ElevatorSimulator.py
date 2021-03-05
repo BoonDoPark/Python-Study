@@ -54,7 +54,6 @@ class Elevator:
 
 class ElevatorScheduler:
     def __init__(self, elevators: List[Elevator]):
-        self.current_datetime = datetime.datetime.now()
         self.elevators = elevators
 
     def get_current_datetime(self):
@@ -63,7 +62,7 @@ class ElevatorScheduler:
         :return:
         """
         # 여기에 로직 추가
-        return self.current_datetime
+        return datetime.datetime.now()
 
     def is_current_datetime_afternoon(self, current_datetime) -> bool:
         """
@@ -72,8 +71,7 @@ class ElevatorScheduler:
         :return:
         """
         # 여기에 로직 추가
-        self.current_datetime = current_datetime
-        current_datetime.strptime('%p')
+        current_datetime.strftime('%p')
         if current_datetime == '오후':
             return True
         else:
@@ -97,10 +95,14 @@ class ElevatorScheduler:
         # 3-3. my_floor 와 elevator.current_floor 비교
         # 3-3. 두 값의 차에 abs 함수 사용 (절대값)
         # 3-4. 적합한 index 값을 selected_elevator_num 에 할당.
-        self.get_current_datetime()
-        self.is_current_datetime_afternoon()
+        current_datetime = self.get_current_datetime()
+        self.is_current_datetime_afternoon(current_datetime)
         for self.elevator in enumerate(self.elevators):
             print(self.elevator)
+            if self.is_current_datetime_afternoon(current_datetime) == True:
+                print()
+            else:
+                print()
         return selected_elevator_num
 
 
