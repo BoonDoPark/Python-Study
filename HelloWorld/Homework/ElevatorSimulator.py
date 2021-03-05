@@ -71,7 +71,7 @@ class ElevatorScheduler:
         :return:
         """
         # 여기에 로직 추가
-        current_datetime.strftime('%p')
+        current_datetime = current_datetime.strftime('%p')
         if current_datetime == '오후':
             return True
         else:
@@ -97,12 +97,13 @@ class ElevatorScheduler:
         # 3-4. 적합한 index 값을 selected_elevator_num 에 할당.
         current_datetime = self.get_current_datetime()
         self.is_current_datetime_afternoon(current_datetime)
-        for self.elevator in enumerate(self.elevators):
-            print(self.elevator)
-            if self.is_current_datetime_afternoon(current_datetime) == True:
-                print()
+        for my_floor, self.elevator in enumerate(my_floor, self.elevators):
+            print(my_floor, self.elevator)
+            if self.is_current_datetime_afternoon(current_datetime):
+                print(self.elevator < my_floor)
             else:
-                print()
+                print(self.elevator > my_floor)
+
         return selected_elevator_num
 
 
