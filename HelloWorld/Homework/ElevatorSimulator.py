@@ -5,7 +5,9 @@ from typing import List
 
 class Me:
     def __init__(self):
-        self.my_floor = random.randint(1, 20)
+        max_floor = Simulator.get_max_floor()
+        min_floor = Simulator.get_min_floor()
+        self.my_floor = random.randint(min_floor, max_floor)
 
     def push_up_button(self):
         """
@@ -40,7 +42,9 @@ class Me:
 
 class Elevator:
     def __init__(self):
-        self.current_floor = random.randint(1, 20)
+        max_floor = Simulator.get_max_floor()
+        min_floor = Simulator.get_min_floor()
+        self.current_floor = random.randint(min_floor, max_floor)
 
     def move(self, destination_floor):
         """
@@ -56,7 +60,8 @@ class ElevatorScheduler:
     def __init__(self, elevators: List[Elevator]):
         self.elevators = elevators
 
-    def get_current_datetime(self):
+    @staticmethod
+    def _get_current_datetime():
         """
         2021.02.26.hsk : 현재 시간 객체(datetime 타입) 반환
         :return:
@@ -64,17 +69,18 @@ class ElevatorScheduler:
         # 여기에 로직 추가
         return datetime.datetime.now()
 
-    def is_current_datetime_afternoon(self, current_datetime) -> bool:
+    @staticmethod
+    def _is_current_datetime_afternoon(current_datetime) -> bool:
         """
         2021.02.26.hsk : 현재 시간이 오후인지 아닌지 비교 (오후일 경우 True, 오전일 경우 False 리턴)
         :param current_datetime: 현재 시간 datetime 객체
         :return:
         """
         # 여기에 로직 추가
-        current_datetime = current_datetime.strftime('%p')
-        if current_datetime == '오후':
+        current_div_am_pm = current_datetime.strftime('%p')
+        if current_div_am_pm == 'PM':
             return True
-        else:
+        elif current_div_am_pm == 'AM':
             return False
 
     def select_elevator(self, my_floor) -> int:
@@ -91,29 +97,51 @@ class ElevatorScheduler:
         # 1. get_current_datetime 구현 :  현재 시간 얻어오기 (current_datetime 변수 선언 후 현재시간 datetime 객체 할당)
         # 2. is_current_datetime_afternoon 구현 : 함수 주석 참고
         # 3-1. for, enumerate 을 통해 self.elevators 순회
-        # 3-2.for 문 내부에서 is_current_datetime_after 의 결과에 따라 if 문으로 분기
+        # 3-2.for 문 내부에서 is_current_datetime_afternoon 의 결과에 따라 if 문으로 분기
         # 3-3. my_floor 와 elevator.current_floor 비교
         # 3-3. 두 값의 차에 abs 함수 사용 (절대값)
         # 3-4. 적합한 index 값을 selected_elevator_num 에 할당.
-        current_datetime = self.get_current_datetime()
-        self.is_current_datetime_afternoon(current_datetime)
-        for my_floor, self.elevator in enumerate(my_floor, self.elevators):
-            print(my_floor, self.elevator)
-            if self.is_current_datetime_afternoon(current_datetime):
-                print(self.elevator < my_floor)
+
+        current_datetime = self._get_current_datetime()
+        is_afternoon = self._is_current_datetime_afternoon(current_datetime)
+
+        min_diff = Simulator.get_max_floor()  # 1
+        max_diff = Simulator.get_min_floor()  # 20
+
+        for elevator_num, elevator in enumerate(self.elevators):
+            distance = abs(my_floor - elevator.current_floor)
+            if is_afternoon:
+                # 먼 층 고르기
+                if distance > max_diff:
+                    max_diff = distance
+                    selected_elevator_num = elevator_num
             else:
-                print(self.elevator > my_floor)
+                # 가까운 층 고르기
+                if distance < min_diff:
+                    min_diff = distance
+                    selected_elevator_num = elevator_num
 
         return selected_elevator_num
 
 
 class Simulator:
+    max_floor = 20
+    min_floor = 1
+
     def __init__(self):
         self.me = Me()
         elevator_count = self._set_elevator_count()
         self.elevators = [Elevator() for i in range(elevator_count)]
         self.scheduler = ElevatorScheduler(self.elevators)
         self.show_current_floor()
+
+    @classmethod
+    def get_max_floor(cls):
+        return cls.max_floor
+
+    @classmethod
+    def get_min_floor(cls):
+        return cls.min_floor
 
     @staticmethod
     def _set_elevator_count():
