@@ -1,7 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
+<<<<<<< Updated upstream
     <list default="true" id="86ef8820-38d3-4feb-85fe-5498be4854ce" name="Default Changelist" comment="" />
+=======
+    <list default="true" id="86ef8820-38d3-4feb-85fe-5498be4854ce" name="Default Changelist" comment="주석 추가 및 엘레베이터의 갯수를 입력받아 동적으로 엘레베이터 객체 생성.">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
+>>>>>>> Stashed changes
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -153,6 +159,14 @@
       <option name="presentableId" value="Default" />
       <updated>1614340781729</updated>
     </task>
+    <task id="LOCAL-00001" summary="주석 추가 및 엘레베이터의 갯수를 입력받아 동적으로 엘레베이터 객체 생성.">
+      <created>1614359023830</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1614359023830</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -166,5 +180,9 @@
       </map>
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="주석 추가 및 엘레베이터의 갯수를 입력받아 동적으로 엘레베이터 객체 생성." />
+    <option name="LAST_COMMIT_MESSAGE" value="주석 추가 및 엘레베이터의 갯수를 입력받아 동적으로 엘레베이터 객체 생성." />
   </component>
 </project>
