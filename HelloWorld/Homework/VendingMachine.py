@@ -1,12 +1,13 @@
 class VendingMachine:
     # 함수를 이용
     def __init__(self):
-        self.drink_menu = {1 : ('레몬', 500), 2 : ('물', 600)}
+        self.drink_menu = {1: ('레몬', 500), 2: ('물', 600), 3: ('환타', 700), 4: ('커피', 1000)}
+        # self.drink_menu = {'레몬': 500, '물': 600, '환타': 700, '커피': 1000}
         self.money = 0
 
     def input(self):
         money = int(input('돈을 넣어주세요 : '))
-        self.money = money
+        self.money = self.money + money
 
     def show_menu(self):
         menus = self.drink_menu.keys()
