@@ -338,6 +338,8 @@ s.price()
 ### 정적메소드 (@staticmethod, @classmethod)
 
 
+### try catch
+### lambda (무명메소드)
 ### 싱글톤패턴
 ### 추상클래스 (import abc)
 ### 동기 / 비동기
