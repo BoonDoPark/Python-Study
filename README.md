@@ -372,6 +372,39 @@ c.drink()
 
 ### 정적메소드 (@staticmethod, @classmethod)
 
+지금까지 클래스(class)가 메소드를 사용할때 객체를 생성해서 호출해왔다. 하지만, 정적메소드는 객체를 생성하지 않아도 접근이 가능한 메소드이다. 정적메소드는 두가지가 있다.**@staticmethod, @classmethod**이다. 정적메소드는 self를 받지 않으므로 인스턴스가 필요없을때 사용한다.
++ 인스턴스 : 객체 = class명()을 나타내어 객체가 class안에 있는 메소드를 사용할 수 있다.
+예를들어,
+
+```python
+class KoreanGreeting:
+    Greeting = '안녕하세요'
+
+    def __init__(self):
+        self.show = self.Greeting
+
+    @classmethod
+    def class_greeting(cls):
+        return cls()
+
+    @staticmethod
+    def static_greeting():
+        return KoreanGreeting()
+
+    def is_greeting(self):
+        print(self.show)
+
+
+class EnglishGreeting(KoreanGreeting):
+    Greeting = 'Hello'
+
+K = EnglishGreeting.class_greeting()
+E = EnglishGreeting.static_greeting()
+K.is_greeting()
+E.is_greeting()
+```
+
+위와 같이 먼저, @staticmethod는 특별히 추가되는 인자는 없기때문에, 상속에서 @classmethod와는 다르게 부모클래스로부터 속성의 값을 가져온다. 그래서, 출력값은 ' 안녕하세요'가 나오고 @classmethod는 cls인자를 가져와 클래스속성을 가져오기 때문에, 출력값은 'Hello'가 나온다.
 
 ### try catch
 ### lambda (무명메소드)
