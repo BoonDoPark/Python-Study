@@ -372,9 +372,8 @@ c.drink()
 
 ### 정적메소드 (@staticmethod, @classmethod)
 
-지금까지 클래스(class)가 메소드를 사용할때 객체를 생성해서 호출해왔다. 하지만, 정적메소드는 객체를 생성하지 않아도 접근이 가능한 메소드이다. 정적메소드는 두가지가 있다.**@staticmethod, @classmethod**이다. 정적메소드는 self를 받지 않으므로 인스턴스가 필요없을때 사용한다.
+지금까지 클래스(class)가 메소드를 사용할때 객체를 생성해서 호출해왔다. 하지만, 정적메소드는 객체를 생성하지 않아도 접근이 가능한 메소드이다. 정적메소드는 두가지가 있다.**@staticmethod, @classmethod**이다. 정적메소드는 self를 받지 않으므로 인스턴스가 필요없을때 사용한다. 예를들어,
 + 인스턴스 : 객체 = class명()을 나타내어 객체가 class안에 있는 메소드를 사용할 수 있다.
-예를들어,
 
 ```python
 class KoreanGreeting:
@@ -419,6 +418,49 @@ E.is_greeting()
 
 ## Homework
 ### 자판기 만들기
+
+파이썬을 이용하여 자판기를 만들어 보았다.
+
+```python
+class VendingMachine:
+    def __init__(self):
+        self.drink_menu = {1: ('레몬', 500), 2: ('물', 600), 3: ('환타', 700), 4: ('커피', 1000)}
+        self.money = 0
+
+    def input(self):
+        money = int(input('돈을 넣어주세요 : '))
+        self.money = self.money + money
+
+    def show_menu(self):
+        menus = self.drink_menu.keys()
+        for menu in menus:
+            menu_name, cost = self.drink_menu[menu]
+            print('{0}. {1} {2}'.format(str(menu), menu_name, cost))
+
+    def select(self):
+        self.show_menu()
+        _idx = int(input('메뉴를 선택해주세요. : '))
+        menu_name, cost = self.drink_menu[_idx]
+        return menu_name, cost
+
+    def compare(self, menu, cost):
+        if self.money >= cost:
+            print('{0}를 받으세요.'.format(menu))
+            self.money = self.money - cost
+        else:
+            print('돈이 부족합니다.')
+
+    def question(self):
+        print(self.money)
+        answer = input('계속하시겠습니까?(네/아니요) : ')
+        if answer == '네':
+            return False
+        elif answer == '아니요':
+            return True
+ ```
+ 
+ + init은 initialize의 줄임말로 초기화란 뜻을 나타낸다. 파이썬에서 스페셜메소드를
+먼저 class VendingMachine으로 객체의 타입을 정한다. init함수(method)안에 음료수메뉴와 돈을 설정한다. self.money = 0으로 설정한 이유는 돈을 얼마를 넣을지 모르기 때문이다. 자판기를 이용할 때, 돈을 넣으면 메뉴가 보이고 메뉴를 선택해서 선택한 물건을 받는다. 그래서, 음료수의 메뉴와 돈을 설정했으니, 돈을 넣는 함수(method)가 필요해서 input함수를 넣었다. 문자가 아닌 숫자로 계산해야 되기 때문에, int함수(method)를 사용해서, int함수(method)에서 출력한 값을 self.money와 더해준다. 돈을 넣는 함수(method)를 만들었으니, 메뉴를 보여줘야 한다. show_menu함수(method)에서 메뉴를 일일히 쓸 필요없이 숫자로 쓰고 싶어서, 음료수메뉴의 딕셔너리(dict)key값을 menus로 받는다. 복수인 이유는 메뉴가 한가지가 아니기 때문에, 복수형이다. menus를 for문으로 이용하여, self.drink_menu[menu]을 메뉴이름과 비용의 리스트로 출력하여 음료번호. 음료, 비용을 포맷함수를 써서 표현한다. select함수(method)에서는 메뉴를 선택해야한다. init함수에 있는 딕셔너리에 숫자를 key로 잡은 이유가 select함수에서 나온다. 번호로 선택해야 하기 때문에, int함수를 쓰고, self.drink_menu[_idx]을 메뉴이름과 비용의 리스트로 출력해서 리턴(return)값으로 반환해준다.
 ### 엘레베이터 (콘솔버전)
 ### 엘레베이터 (pyQt - GUI)
 ### 웹 크롤러 (Selenium, pyQt, Django)
