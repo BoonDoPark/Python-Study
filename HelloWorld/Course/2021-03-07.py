@@ -19,7 +19,8 @@ finally:
     if f:
         while True:
             line = f.readline()
-            if not line: break
+            if not line:
+                break
             print(line)
 
         print('im closed')

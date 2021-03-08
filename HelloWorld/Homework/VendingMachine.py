@@ -18,9 +18,9 @@ class VendingMachine:
     def select(self):
         self.show_menu()
         _idx = int(input('메뉴를 선택해주세요. : '))
-        if self.drink_menu.keys != _idx:
-            print('확인')
-            return None
+        if _idx not in self.drink_menu.keys():
+            print('없는 메뉴입니다.')
+            return None, None
         menu_name, cost = self.drink_menu[_idx]
         return menu_name, cost
 
@@ -35,15 +35,17 @@ class VendingMachine:
         print(self.money)
         answer = input('계속하시겠습니까?(네/아니요) : ')
         if answer == '네':
-            return False
-        elif answer == '아니요':
             return True
+        elif answer == '아니요':
+            return False
 
     def process(self):
         while True:
             self.input()
             menu, cost = self.select()
-            self.compare(menu, cost)
+            if not menu or not cost:
+                return
+            # self.compare(menu, cost)
             answer = self.question()
             if answer:
                 break
