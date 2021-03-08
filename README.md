@@ -423,7 +423,34 @@ E.is_greeting()
 
 위와 같이 먼저, @staticmethod는 특별히 추가되는 인자는 없기때문에, 상속에서 @classmethod와는 다르게 부모클래스로부터 속성의 값을 가져온다. 그래서, 출력값은 ' 안녕하세요'가 나오고 @classmethod는 cls인자를 가져와 클래스속성을 가져오기 때문에, 출력값은 'Hello'가 나온다.
 
-### try catch
+### try except문
+
+try except문는 **예외 처리**라고 한다. 코드를 쓰다보면 오류가 발생한다. 하지만, 이러한 오류들을 무시할 수 있게 해주는 것이 try except문이다. 예를들어,
+
+```python
+try:
+    l1 = [1, 2]
+    print(l1[3])
+except IndexError as e:
+    print(e) # # list index out of range
+```
+
+위와 같이 l1[1, 2]에 l1[3]을 넣으면 IndexError: list index out of range이란 error가 뜬다. 하지만, try ecept문을 사용하면 list index out of range가 출력된다. 그리고 try except문에 finally문을 사용할 수 있지만, 주로 close할때 사용된다.
+
++ open: 파일을 연다.
++ close: 파일을 닫는다.
+
+```python
+h = 0
+try:
+    h = open('a.txt', 'r')
+finally:
+    print('finally', h)
+    h.close()
+```
+
+위와 같이 파일을 열고 try문을 실행한 후 예외 발생 여부와 상관없이 finally절에서 f.close()로 열린 파일을 닫을 수 있다.
+
 ### lambda (무명메소드)
 ### 싱글톤패턴
 ### 추상클래스 (import abc)
