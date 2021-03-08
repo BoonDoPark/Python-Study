@@ -468,6 +468,7 @@ finally:
 
 ```python
 class VendingMachine:
+    # 함수를 이용
     def __init__(self):
         self.drink_menu = {1: ('레몬', 500), 2: ('물', 600), 3: ('환타', 700), 4: ('커피', 1000)}
         self.money = 0
@@ -485,6 +486,9 @@ class VendingMachine:
     def select(self):
         self.show_menu()
         _idx = int(input('메뉴를 선택해주세요. : '))
+        if _idx not in self.drink_menu.keys():
+            print('없는 메뉴입니다.')
+            return None, None
         menu_name, cost = self.drink_menu[_idx]
         return menu_name, cost
 
@@ -505,7 +509,31 @@ class VendingMachine:
  ```
  
  + init은 initialize의 줄임말로 초기화란 뜻을 나타낸다. 파이썬에서 스페셜메소드를
-먼저 class VendingMachine으로 객체의 타입을 정한다. init함수(method)안에 음료수메뉴와 돈을 설정한다. self.money = 0으로 설정한 이유는 돈을 얼마를 넣을지 모르기 때문이다. 자판기를 이용할 때, 돈을 넣으면 메뉴가 보이고 메뉴를 선택해서 선택한 물건을 받는다. 그래서, 음료수의 메뉴와 돈을 설정했으니, 돈을 넣는 함수(method)가 필요해서 input함수를 넣었다. 문자가 아닌 숫자로 계산해야 되기 때문에, int함수(method)를 사용해서, int함수(method)에서 출력한 값을 self.money와 더해준다. 돈을 넣는 함수(method)를 만들었으니, 메뉴를 보여줘야 한다. show_menu함수(method)에서 메뉴를 일일히 쓸 필요없이 숫자로 쓰고 싶어서, 음료수메뉴의 딕셔너리(dict)key값을 menus로 받는다. 복수인 이유는 메뉴가 한가지가 아니기 때문에, 복수형이다. menus를 for문으로 이용하여, self.drink_menu[menu]을 메뉴이름과 비용의 리스트로 출력하여 음료번호. 음료, 비용을 포맷함수를 써서 표현한다. select함수(method)에서는 메뉴를 선택해야한다. init함수에 있는 딕셔너리에 숫자를 key로 잡은 이유가 select함수에서 나온다. 번호로 선택해야 하기 때문에, int함수를 쓰고, self.drink_menu[_idx]을 메뉴이름과 비용의 리스트로 출력해서 리턴(return)값으로 반환해준다.
+
+먼저 class VendingMachine으로 객체의 타입을 정한다. init함수(method)안에 음료수메뉴와 돈을 설정한다. self.money = 0으로 설정한 이유는 돈을 얼마를 넣을지 모르기 때문이다. 자판기를 이용할 때, 돈을 넣으면 메뉴가 보이고 메뉴를 선택해서 선택한 물건을 받은 다음, 거스름돈을 줘야한다. 그래서, 음료수의 메뉴와 돈을 설정했으니, 돈을 넣는 함수(method)가 필요해서 input함수를 넣었다. 문자가 아닌 숫자로 계산해야 되기 때문에, input함수를 int함수(method)로 변환해서 사용해야한다. int함수(method)에서 출력한 값을 self.money와 더해줘야 한다. money만 쓴다면, 자판기를 이용을 끝내지 않고 계속하고 싶을때, 남은 돈의 계산을 못하기 때문에, selfmoney와 더해줘야 한다. 남은돈 돈을 넣는 함수(method)를 만들었으니, 메뉴를 보여줘야 한다. show_menu함수(method)에서 메뉴를 일일히 쓸 필요없이 숫자로 쓰고 싶어서, 음료수메뉴의 딕셔너리(dict)key값을 menus로 받는다. 복수인 이유는 메뉴가 한가지가 아니기 때문에, 복수형이다. menus를 for문으로 이용하여, self.drink_menu[menu]을 메뉴이름과 비용의 리스트로 출력하여 음료번호. 음료, 비용을 format함수를 써서 표현한다. select함수(method)에서는 메뉴를 선택해야한다. init함수에 있는 딕셔너리에 숫자를 key로 잡은 이유가 select함수에서 나온다. 번호로 선택해야 하기 때문에, input함수를 int함수로 변환해야 하고, self.drink_menu[_idx]을 메뉴이름, 비용의 리스트로 출력해서 리턴(return)값으로 변환해준다. 만약, 자판기에 없는 번호를 입력할 수도 있으니, if문에 포함여부를 확인하고, menu_name, cost의 두 변수에 맞춰서 None을 쓴다. 선택까지 다 했으니, 그 다음엔 거스름돈이 반환되어야 한다. 하지만, 고객이 얼마를 넣을지 모르기 때문에, compare함수(method)에서 if문을 이용하여, 고객이 넣은 돈이 음료비용보다 같거나 클 때, 넣은 돈 - 비용을 써주고, 무슨 음료가 나오는지 알려줘야 하기 때문에, formt함수안에 menu를 넣어 출력한다. 자판기를 다시 이용할 수도 있으니, question함수(method)에 input함수로 계속할 것인지를 묻고, if문을 사용해서 bool로 나타내서 네아 아니요를 썼다. '네'가 False이고 '아니요'가 True인 이유는 아래에 if answer에서 True가 되면 break으로 반복이 끝난다. 물론, if now answer로 바꿀순 있다. 하지만, 보는 사람이 코드를 보는데 불편할 수 있으니, '네'가 False이고 '아니요'가 True로 사용했다.  마지막으로 모든 객체를 실행시키는 함수가 있어야 한다.
+
++ int함수(method)는 integet의 줄임말로 정수를 뜻한다. 숫자를 출력할때 사용된다.
++ input함수(method)는 입력하다라는 뜻으로, string계열 즉, 문자를 출력할때 사용된다.
++ bool은 boolean의 약자로 True와 False의 값으로 출력할때 사용된다.
+
+```python
+    def process(self):
+        while True:
+            self.input()
+            menu, cost = self.select()
+            if not menu or not cost:
+                return
+            self.compare(menu, cost)
+            answer = self.question()
+            if answer:
+                break
+                
+machine = VendingMachine()
+machine.process()
+```
+
+모든 함수를 실행시켜줄 함수가 필요하기 때문에, process함수 안에 self.input를 넣고, compare함수가 select함수를 비교할 수 있도록 한다. 그리고 if문을 통해서 select함수에 있는 None타입을 두변수에 지정해준다. 그 다음,  machine에 VendingMachine의 객체를 만들고, 객체에 process함수를 실행해서, 자판기를 이용할수 있었다.
+
 ### 엘레베이터 (콘솔버전)
 ### 엘레베이터 (pyQt - GUI)
 ### 웹 크롤러 (Selenium, pyQt, Django)
