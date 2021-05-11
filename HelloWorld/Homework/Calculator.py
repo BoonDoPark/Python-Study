@@ -1,26 +1,33 @@
 class Calculator:
-    first = int(input('숫자 : '))
-    second = int(input('숫자 : '))
+
+    def __init__(self, first, second):
+        self.first = first
+        self.second = second
 
     def add(self):
-        return self.first + self.second
+        a = self.first + self.second
+        return a
 
     def sub(self):
-        return self.first - self.second
+        s = self.first - self.second
+        return s
 
     def mul(self):
-        return self.first * self.second
+        m = self.first * self.second
+        return m
 
     def div(self):
-        return self.first / self.second
+        d = self.first / self.second
+        return d
 
-c = Calculator()
-p = c.add()
+
+c = Calculator(100, 50)
+a = c.add()
 s = c.sub()
 m = c.mul()
 d = c.div()
-print(p)
+
+print(a)
 print(s)
 print(m)
 print(d)
-
