@@ -15,21 +15,21 @@ if year <= 1917:
         day = 0
         day_cal = int(input('기념일 : '))
         # 리스트안에서 요소를 다 합해야 하기 때문에, for문으로 리스트의 합을 구했다.
-        for days in (day_month_leap_year):
+        for days in day_month_leap_year:
             day = day + days
             # 원래는 256에서 243일을 빼지만, 윤년에는 2월에 1일이 추가되기 때문에,
             # 프로그래머의 날은 9월 12일로 된다.
             if day < day_cal:
-                day = day_cal - day
-        print('{}-09-{}'.format(year, day))
+                special_day = day_cal - day
+        print('{}-09-{}'.format(year, special_day))
     else:
         day = 0
         day_cal = int(input('기념일 : '))
         for days in day_month_nomal_year:
             day = day + days
             if day < day_cal:
-                day = day_cal - day
-        print('{}-09-{}'.format(year, day))
+                special_day = day_cal - day
+        print('{}-09-{}'.format(year, special_day))
 
 elif year == 1918:
     print('{}-09-26'.format(year))
@@ -42,8 +42,8 @@ elif year > 1918:
         for days in day_month_leap_year:
             day = day + days
             if day < day_cal:
-                day = day_cal - day
-        print('{}-09-{}'.format(year, day))
+                special_day = day_cal - day
+        print('{}-09-{}'.format(year, special_day))
 
     else:
         day = 0
@@ -51,7 +51,7 @@ elif year > 1918:
         for days in day_month_nomal_year:
             day = day + days
             if day < day_cal:
-                day = day_cal - day
-        print('{}-09-{}'.format(year, day))
+                special_day = day_cal - day
+        print('{}-09-{}'.format(year, special_day))
 else:
     print('없는 날입니다.')
