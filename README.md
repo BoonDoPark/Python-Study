@@ -452,6 +452,8 @@ finally:
 위와 같이 파일을 열고 try문을 실행한 후 예외 발생 여부와 상관없이 finally절에서 f.close()로 열린 파일을 닫을 수 있다.
 
 ### lambda (무명메소드)
+### map, reduce, filter
+### property
 ### 싱글톤패턴
 ### 추상클래스 (import abc)
 ### 동기 / 비동기
