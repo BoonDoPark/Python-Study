@@ -5,7 +5,7 @@
 즉, 기본적인 **사칙연산으로 계산**을 할 수 있습니다.
 
 ## Technical Stacks
-### Module
+### Framework
 + tkinter
 
 ## Rule
