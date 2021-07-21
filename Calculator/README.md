@@ -34,4 +34,4 @@ class Calculator:
 
 ## Functions
 ### 계산기
-[>> detail..](./markdowns/.md)
+[>> detail..](./markdowns/Calculator.md)
