@@ -452,6 +452,24 @@ finally:
 위와 같이 파일을 열고 try문을 실행한 후 예외 발생 여부와 상관없이 finally절에서 f.close()로 열린 파일을 닫을 수 있다.
 
 ### lambda (무명메소드)
+
+lambda는 간단한 함수를 대신하여 필요한 곳에서 한줄로 표현할 수 있다. 즉, 가독성과 메모리적으로 매우 효율적이다. 그리고 lambda엔 새 변수를 넣을 수 없다.
+```python
+def add(x, y):
+    return x+y
+
+print(add(10, 20)) # 30
+```
+
+lambda식으로 표현하면
+
+```python
+add = lambda x, y: x+y
+print(add(10, 20)) # 30
+```
+
+위의 코드같이 간단한 함수는 lambda로 쉽게 쓸 수 있다.
+
 ### map, reduce, filter
 ### property
 ### 싱글톤패턴
