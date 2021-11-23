@@ -453,7 +453,7 @@ finally:
 
 ### lambda (무명메소드)
 
-lambda는 간단한 함수를 대신하여 필요한 곳에서 한줄로 표현할 수 있다. 즉, 가독성과 메모리적으로 매우 효율적이다. 그리고 lambda엔 새 변수를 넣을 수 없다.
+단순한 함수를 한번만 사용해야 할 때 함수를 쓰는건 매우 가독성이 떨어진다. 그래서, 일회성 함수대신 lambda함수로 대체하여 가독성을 높일 수 있다.
 ```python
 def add(x, y):
     return x+y
@@ -471,6 +471,70 @@ print(add(10, 20)) # 30
 위의 코드같이 간단한 함수는 lambda로 쉽게 쓸 수 있다.
 
 ### map, reduce, filter
+
+#### map
+
+map함수는 map(function, iterable) 이렇게 파라미터로 두고 있다. map함수는 여러개의 데이터를 한번에 다르게 바꿀 때 사용한다. 예를 들어,
+```python
+num_list = [2, 3, 4, 5]
+num_map = map(lambda x: x**2, num_list)
+
+print(num_map) # <map object at 0x000001AF81921AF0>
+print(list(num_map)) # [4, 9, 16, 25]
+```
+
+위의 코드처럼 lambda함수를 이용하여 사용할 수 있다. map함수는 list나 tuple로 감싸줘야 한다.
+
+```python
+num_list = [2, 3, 4, 5]
+
+for i in range(len(num_list)):
+    num_list[i] = num_list[i]**2
+
+print(num_list) # [4, 9, 16, 25]
+```
+
+위의 코드로도 결과는 같게 나온다. 하지만 가독성이 굉장히 나쁘다.
+
+#### reduce
+
+reduce함수는 여러개의 데이터를 집계해서 결과를 보여주기 위해 사용된다.
+```python
+from functools import reduce
+
+num_list = [2, 3, 4, 5]
+
+num_reduce = reduce(lambda x, y: x+y, num_list)
+print(num_reduce) # 14
+```
+
+위와 같이 reduce함수는 내장함수가 아니여서 functools모듈로 import해줘야 한다.
+
+```python
+num_list = [2, 3, 4, 5]
+num = 0
+
+for i in num_list:
+    num += i
+
+print(num) # 14
+```
+
+위와 같은 코드로도 결과값은 나오지만, 가독성이 나쁘기 때문에 reduce함수를 사용하여 가독성을 올려줄 수 있다.
+
+#### filter
+
+filter함수는 말 그대로 어떤 특정 조건에 데이터를 걸러주는 함수이다.
+```python
+num_list = [2, 3, 4, 5]
+
+num_filter = filter(lambda x: x < 3, num_list)
+print(num_filter) # <filter object at 0x0000024DDB741250>
+print(list(num_filter)) # [2]
+```
+
+filter함수는 list나 tuple로 감싸줘야 한다.
+
 ### property
 ### 싱글톤패턴
 ### 추상클래스 (import abc)
